@@ -14,16 +14,16 @@ function divide(x,y) {
     return x/y;
 }
 
-// function operate(firstNumber,secondNumber,operator) {
-//     if(operator === "+")
-//         return add(firstNumber,secondNumber);
-//     else if(operator === "-")
-//         return subtract(firstNumber,secondNumber);
-//     else if(operator === "x")
-//         return multiply(firstNumber,secondNumber);
-//     else
-//         return divide(firstNumber,secondNumber);
-// }
+function operate(firstNumber,secondNumber,operator) {
+    if(operator === "+")
+        return add(firstNumber,secondNumber);
+    else if(operator === "-")
+        return subtract(firstNumber,secondNumber);
+    else if(operator === "x")
+        return multiply(firstNumber,secondNumber);
+    else
+        return divide(firstNumber,secondNumber);
+}
 
 function calculator() {
     let firstNumber, operator, secondNumber;
