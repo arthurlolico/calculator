@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #B0E0E6;
+}
+
+#container {
+    height: 480px;
+    width: 320px;
+    background-color: peachpuff;
+    border: 10px groove black;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.display {
+    background-color: gray;
+    width: 90%;
+    font-size: 48px;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.line {
+    flex:1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    gap: 40px;
+}
+
+button {
+    flex:1;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+}

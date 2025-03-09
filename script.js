@@ -33,7 +33,7 @@ function showOperation(display,buttonText){
     let disp = display.textContent;
     let length = disp.length;
 
-    finalValue(display);
+    finalValue(display,buttonText);
 
     if(disp[length - 1] === "+" || disp[length - 1] === "-" || disp[length - 1] === "X" || disp[length - 1] === "/") {
         let previousOperation = disp[length-1];
@@ -57,7 +57,7 @@ function showNumber(display,buttonText,indexNumber) {
     }
 }
 
-function finalValue(display) {
+function finalValue(display,buttonText) {
     let terms = display.textContent.split(" ");
     let result;
     if(terms.length === 3) {
@@ -65,7 +65,11 @@ function finalValue(display) {
             display.textContent = "YOU SHALL NOT DIVIDE BY ZERO ";
         else {
             result = operate(parseInt(terms[0]),parseInt(terms[2]),terms[1]);
-            display.textContent = (result.toString()).concat(" ");
+            if(buttonText !== "=")
+                display.textContent = (result.toString()).concat("");
+            else{
+                display.textContent = (result.toString()).concat(" ");
+            }
         }
     }
 }
@@ -85,7 +89,7 @@ function analysis(display,buttonText) {
     }
 
     if(buttonText === "="){
-        finalValue(display);
+        finalValue(display,buttonText);
         return 0;
     }
 
