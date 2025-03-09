@@ -1,4 +1,4 @@
-let numbers = ["0","1"];
+let numbers = ["0","1","2","3","4","5","6","7","8","9"];
 let operations = ["+","-","X","/"];
 
 function add(x,y) {
@@ -14,7 +14,7 @@ function multiply(x,y) {
 }
 
 function divide(x,y) {
-    return x/y;
+    return Math.round((x/y)*100)/100;
 }
 
 function operate(firstNumber,secondNumber,operator) {
@@ -29,13 +29,18 @@ function operate(firstNumber,secondNumber,operator) {
 }
 
 function showOperation(display,buttonText){
-    let flag = 0;
-    for(let i = 0; i < operations.length && flag === 0 ; i++) {
-        if(numbers[i] === buttonText)
-            flag = 1;
-    }
 
-    display.textContent = display.textContent.concat(" ", buttonText);
+    let disp = display.textContent;
+    let length = disp.length;
+
+    finalValue(display);
+
+    if(disp[length - 1] === "+" || disp[length - 1] === "-" || disp[length - 1] === "X" || disp[length - 1] === "/") {
+        let previousOperation = disp[length-1];
+        display.textContent = disp.replace(previousOperation,buttonText);
+    }
+    else
+        display.textContent = display.textContent.concat(" ", buttonText);
 }
 
 function showNumber(display,buttonText,indexNumber) {
@@ -54,16 +59,30 @@ function showNumber(display,buttonText,indexNumber) {
 
 function finalValue(display) {
     let terms = display.textContent.split(" ");
-    terms.map((term) => console.log(term));
     let result;
     if(terms.length === 3) {
-        result = operate(parseInt(terms[0]),parseInt(terms[2]),terms[1]);
+        if(terms[1] === "/" && terms[2] === "0")
+            display.textContent = "YOU SHALL NOT DIVIDE BY ZERO ";
+        else {
+            result = operate(parseInt(terms[0]),parseInt(terms[2]),terms[1]);
+            display.textContent = (result.toString()).concat(" ");
+        }
     }
-    display.textContent = result;
 }
 
 function analysis(display,buttonText) {
     let flag = 0;
+
+    let temp = display.textContent;
+    if(temp[temp.length - 1] === " ") {
+            display.textContent = buttonText;
+        return 0;
+    }
+
+    if(buttonText === "CE") {
+        display.textContent = "0";
+        return 0;
+    }
 
     if(buttonText === "="){
         finalValue(display);
