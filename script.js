@@ -79,10 +79,8 @@ function analysis(display,buttonText) {
 
     let temp = display.textContent;
     if(temp[temp.length - 1] === " ") {
-        if(buttonText === "+" || buttonText === "-" || buttonText === "X" || buttonText === "/") {
-            console.log("HERE");
+        if(buttonText === "+" || buttonText === "-" || buttonText === "X" || buttonText === "/")
             display.textContent = "0";
-        }
         else
             display.textContent = buttonText;
         return 0;
